@@ -1,0 +1,53 @@
+.score-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #100e0e;
+  border: 1px solid #0b0a0a;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(229, 40, 40, 0.3);
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #050404;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.buttonhome{
+  width: 90px;
+  height: 40px;
+  margin-right: 50%;
+  color: #fbfafa;
+  background-color: #3ed92d;
+  border: 2px solid #0a0a0a;
+  outline: none;
+  border-radius: 6px;
+  cursor:pointer;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: Ss;
+  text-align:center;
+
+}
+.navigation .buttonhome:hover{
+  background-color: #3ed92d;
+  color: rgb(244, 241, 241);
+}
+.buttn{
+  margin-left: 40%;
+}

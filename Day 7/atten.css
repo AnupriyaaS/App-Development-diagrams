@@ -1,0 +1,32 @@
+.attendance-update-form {
+    width: 400px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  .attendance-update-form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .attendance-update-form input[type='text'],
+  .attendance-update-form input[type='number'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .attendance-update-form button {
+    padding: 10px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .attendance-update-form button:hover {
+    background-color: #45a049;
+  }
+  
