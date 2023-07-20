@@ -1,0 +1,48 @@
+.app2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('C:\Users\Anupriya\Downloads\myflip\public\Images\assign.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 0px;
+  }
+  
+  .file-upload-box {
+    background-color: rgb(3, 3, 3);
+    width: 400px;
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.file-upload-box h2 {
+      color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .file-upload-box input[type='file'] {
+    margin-bottom: 20px;
+  }
+  
+
+  .file-upload-box button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .file-upload-box button:hover {
+    background-color: #45a049;
+  }
+  
