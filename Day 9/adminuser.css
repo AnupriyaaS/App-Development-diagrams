@@ -1,0 +1,35 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eeeeee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+  height: 100%;
+  }
+}
+.user-login{
+  text-align: center;
+    color: #000;
+    background-color: #1c5ce6;
+    margin-left: 45%;
+    border-color: #000;
+}
+.sign-in-butt{
+  color: #000;
+}
+.rememberme-checkbox{
+  color: #000;
+  background-color: rgb(13, 58, 239);
+  width: 150px;
+  height: 30px;
+}
+.link-danger{
+  text-align: center;
+  margin-left: 45%;
+}
