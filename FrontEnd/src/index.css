@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 
+ .login-page{
+  width: 10px;
+   height: 580px;
+   margin-top: 340px;
+   padding-top: 1px;
+   margin-right: 320px;
+   margin-left: 800px;
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+      
+      h1 {
+        color: rgb(1, 1, 1);
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-align: center;
+        border: #fefefe;
+      }
+ 
+  body{
+   background-image: url("home.jpeg");
+   background-repeat: no-repeat;
+   background-size: cover;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  
+  form {
+     display: flex; 
+    flex-direction: column; 
+    align-items: 100px;
+    border: 1px solid rgb(9, 9, 9);
+    padding: 20px;
+    border-radius: 15px; 
+    width: 300px;
+    background-color: #973c3c;
+    margin-left: 600px;
+   }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    padding: 8px;
+    border-radius: 5px;
+    width: 95%;
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: center;
+    background-color: #fbf7f7;
+    color: #040404;
+  }
+ 
+    .h {
+      color: rgb(126, 29, 29);
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+    
+  button[type="submit"] {
+    background-color: #ed0db8;
+    color: rgb(4, 4, 4);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    color: rgb(250, 249, 250);
+    background-color: #b709f7;
+  }  */
+
+/*   
+.login-page {
+  display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    
+    h1 {
+      color: rgb(1, 1, 1);
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: 100px;
+      border: 1px solid rgb(9, 9, 9);
+      padding: 20px;
+      border-radius: 15px;
+      width: 400px;
+      background-color: #ffffff;
+      margin-left: 800px;
+    }
+    
+    .form-group {
+      color: rgb(126, 29, 29);
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+    
+    .login-page {
+      background-image: url('home.jpeg');
+      background-size: 120em 900px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 17px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      padding: 8px;
+      border: 1px solid rgb(18, 79, 212);
+      border-radius: 5px;
+      width: 95%;
+      font-size: 10px;
+      margin-top: 5px;
+      background-color: #fbf7f7;
+      color: #040404;
+    }
+    
+    button[type="submit"] {
+      background-color: #ed0db8;
+      color: rgb(4, 4, 4);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    button[type="submit"]:hover {
+      color: rgb(250, 249, 250);
+      background-color: #b709f7;
+    } */
+    
+      /* body {
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: 'Times New Roman', Times, serif;
+        padding: 0;
+         font-family: sans-serif; 
+         height: 100%;
+        background-color: rgb(255, 0, 217);
+        text-align: center;
+        }
+        h1{
+          background-color: rgb(245, 245, 246);
+        }
+        html, body, #root, #root>div {
+          height: 100%;
+          }
+          body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+          height: 100%;
+          }  */

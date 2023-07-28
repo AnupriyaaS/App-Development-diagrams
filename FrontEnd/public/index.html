@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+<!-- Ex-1	Demonstration of a Stateless Functional Component
+fcomponent.js
+import React from 'react'
+ function Demo() {
+ return(
+ <div>
+ <h1>Hello everyone, Welcome to react.</h1>
+ </div>
+ )
+ }
+ export default Demo
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+
+);
+App.js
+import './App.css';
+import Demo from './fcomponent'
+
+function App() {
+  return (
+    <div className="App">
+      <Demo/>
+    </div>
+  );
+}
+
+export default App;
+
+ 
+Ex-2 .Demonstration of a Statefull Class Component
+ccomponent.js
+import React from 'react'
+ class Ccomponent extends React.Component {
+ state = { }
+ render() {
+ return (
+ <div>
+ <h1>Class Component:</h1>
+ <h2>Hello Everyone,Welcome To React</h2>
+ </div>
+ );
+ }
+}
+export default Ccomponent;
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+App.js
+import './App.css';
+import Ccomponent from './ccomponent';
+
+function App() {
+  return (
+    <div className="App">
+      <Ccomponent/>
+    </div>
+  );
+}
+
+export default App;
+
+ 
+Ex-3	Implementation of Conditional Rendering using Class Component
+Conditionalrendering.js
+import React, { Component } from 'react';
+ import 'bootstrap/dist/css/bootstrap.css';
+ class Conditionalrendering extends Component {
+ state = { count: 0 ,name:"Zero"}
+ changeCount(){
+ if(this.state.count===0 )
+ return"Zero";
+ else if(this.state.count===10)
+ return"Ten";
+ else
+ return this.state.count;
+ }
+ changeColor1(){
+ let str="btn btn-";
+ if(this.state.count===0){
+ str+="danger";
+ }
+ else {
+ str+="success";
+ }
+ return str;
+ }
+ changeColor2(){
+ let str="btn btn-";
+ if(this.state.count===10){
+ str+="danger";
+ }
+ else {
+ str+="success";
+ }
+ return str;
+ }
+ render() {
+ return (<div style={{textAlign:'center',padding:50}}>
+ <h1 style={{padding:100}}> Conditional Rendering:</h1>
+ <button className={this.changeColor1()}style={{width:100,height:50}}
+ disabled={this.state.count===0} onClick={() =>
+ { this.setState({ count: this.state.count - 1 }) }}>- </button>
+ <span style={{padding:50,fontSize:27}}>{this.changeCount()}</span>
+ <button className={this.changeColor2()}
+ style={{width:100,height:50}}disabled={this.state.count===10}
+ onClick={() => { this.setState({ count: this.state.count + 1 }) }}>+</button>
+ </div>);
+ }
+}
+export default Conditionalrendering;
+
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+
+App.js
+import './App.css';
+import Conditionalrendering from './conditionalrendering';
+
+function App() {
+  return (
+    <div className="App">
+      <Conditionalrendering/>
+    </div>
+  );
+}
+
+export default App;
+
+
+Ex-4	Implementation of Communication between Parent and child Components
+Parent.js
+import React from 'react';
+ import Child from './Child';
+ class Parent extends React.Component{
+ state = {
+name: "",
+}
+handleCallback = (childData) =>{
+this.setState({name: childData})
+}
+render(){
+const {name} = this.state;
+return(
+<div style={{textAlign:'center'}}>
+ <h1>Child and Parent Components</h1>
+<Child parentCallback = {this.handleCallback}/>
+{name}
+</div>
+
+)
+}
+ }
+ export default Parent;
+
+Child.js
+import React from 'react'
+ class Child extends React.Component{
+onTrigger = (event) => {
+this.props.parentCallback(event.target.myname.value);
+event.preventDefault();
+}
+render(){
+return(
+<div>
+<form onSubmit = {this.onTrigger}>
+<input type = "text"
+name = "myname" placeholder = "Enter Name"/>
+<br></br><br></br>
+<input type = "submit" value = "Submit"/>
+<br></br><br></br>
+</form>
+</div>
+)
+}
+ }
+ export default Child
+
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+
+App.js
+import './App.css';
+import Parent from './parent'
+
+function App() {
+  return (
+    <div className="App">
+      <Parent/>
+    </div>
+  );
+}
+
+export default App;
+
+
+Ex-5 .Create material UI Card using React
+skcet.js
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
+export default function MediaCard() {
+ return (
+ <Card sx={{ maxWidth: 345 }}>
+ <CardMedia
+ component="img"
+ height="140"
+
+image="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/EBnda3IIUzAJDMXe90eQQqb
+mJJyyw5uaqPyjJYna8yYStYSTmNCA+agBA+EsBXjrWNR0VxSpiJqlAODLDgubLLUo1vHdFxb9CHl
+UqXubGSaJ5DygjhNkonoClKUChbhm+HIqrg6iA8nEpDB/A7o1HR+ozCu938IjmTMIp82Ckl+
+/rjE3wp5woUA1wVtTHRbthQoZPY2ZeI4UKGhM//2Q=="
+ alt="green iguana"
+ />
+ <CardContent>
+ <Typography gutterBottom variant="h5" component="div">
+ SKCET
+ </Typography>
+ <Typography variant="body2" color="text.secondary">
+ SKCET is one of the finest colleges in South India.It is well known for it's infrastructure,
+academics and the placements offered. With Asia's second-largest library, SKCET is well -known for it's
+architecture and maintenance.
+ </Typography>
+ </CardContent>
+ <CardActions>
+ <Button size="small">Share</Button>
+ <Button size="small">Learn More</Button>
+ </CardActions>
+ </Card>
+ );
+}
+
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+
+App.js
+import './App.css';
+import MediaCard from './skcet';
+
+function App() {
+  return (
+    <div className="App">
+      <MediaCard/>
+    </div>
+  );
+}
+
+export default App;
+
+
+6.Design a Custom Navigation bar using React
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+ReactDOM.render(
+<App />,
+document.getElementById('root')
+);
+App.js
+import React from 'react'
+import ResponsiveAppBar from './ResponsiveAppBar';
+
+function App(){
+ return(
+ <ResponsiveAppBar/>
+ );
+}
+export default App
+ResponsiveAppBar
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+function ResponsiveAppBar() {
+const [anchorElNav, setAnchorElNav] = React.useState(null);
+const [anchorElUser, setAnchorElUser] = React.useState(null);
+const handleOpenNavMenu = (event) => {
+setAnchorElNav(event.currentTarget);
+};
+const handleOpenUserMenu = (event) => {
+setAnchorElUser(event.currentTarget);
+};
+const handleCloseNavMenu = () => {
+setAnchorElNav(null);
+};
+const handleCloseUserMenu = () => {
+ setAnchorElUser(null);
+};
+return (
+<AppBar position="static">
+ <Container maxWidth="xl">
+<Toolbar disableGutters>
+<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+ <Typography
+ variant="h6" noWrap
+ component="a"
+ href="/" sx={{ mr:
+2,
+display: { xs: 'none', md: 'flex' },
+fontFamily: 'monospace',
+fontWeight: 700, letterSpacing:
+'.3rem', color:
+'inherit', textDecoration:
+'none',
+}}
+>
+SKCET
+ </Typography>
+<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+<IconButton
+size="large"
+aria-label="account of current user"
+aria-controls="menu-appbar" ariahaspopup="true"
+onClick={handleOpenNavMenu} color="inherit"
+>
+<MenuIcon />
+</IconButton>
+<Menu id="menuappbar"
+anchorEl={anchorElNav}
+anchorOrigin={{ vertical:
+'bottom', horizontal:
+'left',
+}}
+keepMounted
+transformOrigin={{ vertical:
+'top', horizontal:
+'left',
+}}
+open={Boolean(anchorElNav)}
+onClose={handleCloseNavMenu} sx={{ display: { xs: 'block',
+md: 'none' },
+}}
+>
+{pages.map((page) => (
+<MenuItem key={page} onClick={handleCloseNavMenu}>
+<Typography textAlign="center">{page}</Typography>
+</MenuItem>
+))}
+</Menu>
+</Box>
+<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+<Typography
+variant="h5" noWrap
+component="a"
+href="" sx={{ mr:2,display: { xs: 'flex', md: 'none' },
+flexGrow: 1, fontFamily: 'monospace',
+fontWeight: 700, letterSpacing:
+'.3rem',
+color: 'inherit',
+textDecoration: 'none',
+}}
+>
+SKCET
+</Typography>
+<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+{pages.map((page) => (
+<Button
+key={page}
+onClick={handleCloseNavMenu}
+sx={{ my: 2, color: 'white', display: 'block' }}
+>
+{page}
+</Button>
+))}
+</Box>
+<Box sx={{ flexGrow: 0 }}>
+<Tooltip title="Open settings">
+<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+</IconButton>
+</Tooltip>
+<Menu sx={{ mt:'45px' }} id="menuappbar"
+ anchorEl={anchorElUser}
+anchorOrigin={{ vertical:
+'top', horizontal: 'right',
+}}
+keepMounted
+ transformOrigin={{ vertical:'top', horizontal:'right',
+}}
+ open={Boolean(anchorElUser)}
+ onClose={handleCloseUserMenu}
+>
+ {settings.map((setting) => (
+ <MenuItem key={setting} onClick={handleCloseUserMenu}>
+ <Typography textAlign="center">{setting}</Typography>
+ </MenuItem>
+))}
+ </Menu>
+ </Box>
+</Toolbar>
+ </Container>
+ </AppBar>
+);
+}
+export default ResponsiveAppBar;
+
+7.Implementation of React component to handle HTTP requests
+fetch.js
+import { useEffect, useState } from "react";
+export default function FetchAPI(){
+const [user, setUser] = useState([]);
+useEffect(() => {
+ fetch('https://jsonplaceholder.typicode.com/users')
+.then(res => res.json())
+.then(res => setUser(res))
+})
+console.log(user)
+return(
+ <div className="main">
+ {user.map(u => (
+ <div>{u.name}, {u.id}, {u.email}</div>
+ ))}
+ </div>
+)
+}
+
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+
+App.js
+import './App.css';
+import FetchAPI from './fetch';
+// import MediaCard from './skcet';
+
+function App() {
+  return (
+    <div className="App">
+      <FetchAPI/>
+    </div>
+  );
+}
+
+export default App;
+
+8. Implementation of Drop-down Component using React
+Dropdown.js
+import * as React from 'react';
+import './Dropdown.css'
+const App = () => {
+return (
+ <div>
+ <select>
+ <option value="fruit">Fruit</option>
+ <option value="vegetable">Vegetable</option>
+ <option value="meat">Meat</option>
+ <option value="Groceries">Groceries</option>
+ <option value="Snacks">Snacks</option>
+ <option value="Footwears">Footwears</option>
+ </select>
+ </div>
+);
+};
+export default App;
+Dropdown.css
+.dropdown-container {
+    text-align: left;
+    border: 2px solid rgb(57, 19, 196);
+    position: relative;
+    border-radius: 5px;
+   }
+   .dropdown-input {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+   }
+App.js
+import Dropdown from "./Dropdown";
+export default function App() {
+  return (
+    <div className="App">
+    <Dropdown placeHolder="Select..." />
+    </div>
+    );
+  }
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+<App/>
+</React.StrictMode>
+);
+ 
+9. Implementation of Routing in React
+returnpage.js
+import "./mainpage.css"
+import "./returnpage.css"
+import { Link } from "react-router-dom";
+const Returnpage = () => {
+return (
+    <>
+<div>
+<h1>This is Next Page</h1>
+<Link to='/mainpage' class="v2_21">Back to mainpage</Link>
+</div>
+</>
+);
+};
+export default Returnpage;
+
+returnpage.css
+.v2_21 {
+    top: 100px;
+    left: 50vh;
+    position: absolute;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 30px;
+    text-align: center;
+    }
+
+mainpage.css
+.v2_21 {
+    top: 100px;
+    left: 50vh;
+    position: absolute;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 30px;
+    text-align: center;
+    }
+mainpage.js
+import React from 'react';
+import "./mainpage.css"
+import "./returnpage.css"
+import { Link } from "react-router-dom";
+const Mainpage = () => {
+return (
+<>
+<div>
+<h1>This is Mainpage</h1>
+<Link to="/returnpage" className="v2_21">Next Page</Link>
+</div>
+</>
+);
+};
+export default Mainpage;
+index.css
+html, body, #root, #root>div {
+  height: 100%;
+  }
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  }
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+ReactDOM.render(
+<App />,
+document.getElementById('root')
+);
+
+App.test.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+it('renders without crashing', () => {
+const div = document.createElement('div');
+ReactDOM.render(<App />, div);
+});
+
+App.js
+import './mainpage.css';
+import './returnpage.css';
+import Mainpage from './mainpage'
+import Returnpage from './returnpage'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+function App() {
+return(
+<Router>
+<div className='App'>
+<Routes>
+<Route exact path='/' element={<Mainpage />}></Route>
+<Route exact path='/mainpage' element={<Mainpage />}></Route>
+<Route exact path='/returnpage' element={<Returnpage />}></Route>
+</Routes>
+</div>
+</Router>
+)
+}
+export default App;
+10.  Implementation of form Validation in React
+App.css
+#register, #login {
+  width: 300px;
+  border: 1px solid #d6d7da; padding: 0px 15px 15px 15px; border-radius: 5px;
+  font-family: arial; line-height: 16px; color: #333333; font-size: 14px;
+  background: #ffffff; margin: 100px auto;
+  }
+  form label, form input { display: block;
+  margin-bottom: 10px; width: 90%
+  }
+  form input { padding: 10px;
+  border: solid 1px #BDC7D8;
+  }
+  .button {
+  background-color: #00BFFF; border-color: #3ac162; font-weight: bold; padding: 12px 15px; color: #ffffff;
+  }
+  .errorMsg { color: #cc0000;
+  margin-bottom: 12px;
+  }
+  .sucessMsg { color: #6B8E23;
+  margin-bottom: 10px;
+  }
+App.js
+import "./App.css";
+import RegisterForm from "./code";
+function App() {
+  return (
+    <div className="App">
+      <RegisterForm />
+    </div>
+  );
+}
+export default App;
+
+code.js
+import React from 'react';
+ import './App.css';
+class RegisterForm extends React.Component { constructor() {
+super(); this.state = {
+fields: {},
+errors: {}
+}
+this.handleChange = this.handleChange.bind(this); this.submituserRegistrationForm =
+this.submituserRegistrationForm.bind(this);
+};
+handleChange(e) {
+let fields = this.state.fields; fields[e.target.name] = e.target.value; this.setState({
+fields
+});
+}
+submituserRegistrationForm(e) { e.preventDefault();
+if (this.validateForm()) { let fields = {}; fields["username"] = "";
+fields["mobileno"] = "";
+fields["password"] = ""; this.setState({fields:fields}); alert("Form submitted");
+}
+}
+validateForm() {
+let fields = this.state.fields; let errors = {};
+let formIsValid = true; if (!fields["username"]) {
+formIsValid = false;
+errors["username"] = "*Please enter your username.";
+}
+if (typeof fields["username"] !== "undefined") {
+if (!fields["username"].match(/^[a-zA-Z ]*$/)) { formIsValid = false;
+errors["username"] = "*Please enter alphabet characters only.";
+}
+}
+if (!fields["emailid"]) { formIsValid = false;
+errors["emailid"] = "*Please enter your email-ID.";
+}
+if (!fields["mobileno"]) { formIsValid = false;
+errors["mobileno"] = "*Please enter your mobile no.";
+}
+if (typeof fields["mobileno"] !== "undefined") { if (!fields["mobileno"].match(/^[0-9]{10}$/)) {
+
+formIsValid = false;
+errors["mobileno"] = "*Please enter valid mobile no.";
+}
+}
+if (!fields["password"]) { formIsValid = false;
+errors["password"] = "*Please enter your password.";
+}
+if (typeof fields["password"] !== "undefined") {
+if (!fields["password"].match("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0- 9])(?=.)(?=.{8,})")) {
+formIsValid = false;
+errors["password"] = "*Please enter secure and strong password.";
+}
+}
+this.setState({ errors: errors
+});
+return formIsValid;
+}
+render() { return (
+<div id="main-registration-container">
+<div id="register">
+<h3>Registration page</h3>
+<form method="post" name="userRegistrationForm" onSubmit=
+{this.submituserRegistrationForm} >
+<label>Name</label>
+<input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange}
+/>
+<div className="errorMsg">{this.state.errors.username}</div>
+<label>Mobile No:</label>
+<input type="text" name="mobileno" value={this.state.fields.mobileno} onChange={this.handleChange}
+/>
+<div className="errorMsg">{this.state.errors.mobileno}</div>
+<label>Password</label>
+<input type="password" name="password" value={this.state.fields.password}
+onChange={this.handleChange} />
+<div className="errorMsg">{this.state.errors.password}</div>
+<input type="submit" className="button" value="Register"/>
+</form>
+</div>
+</div>
+);
+
+}
+}
+export default RegisterForm -->
+

@@ -1,0 +1,25 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.link-admin{
+    text-align: center;
+    margin-left: 45%;
+}
+.heading-admin{
+    text-align: center;
+    color: rgb(31, 64, 208);
+}
+.sign-in-butt{
+  color: rgb(255, 255, 255);
+}
+.sign-in-butt:hover{
+  color: rgb(241, 234, 234);
+}
+/* .rememberme-box{
+  color: #000;
+  background-color: rgb(36, 36, 38);
+} */
